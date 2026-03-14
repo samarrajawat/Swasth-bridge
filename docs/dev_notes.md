@@ -5,3 +5,4 @@
 - Considered material UI vs raw CSS.
 - Need to handle protected routes.
 - JWT based authentication makes sense.
+- MongoDB schemas for Doctor and User.
