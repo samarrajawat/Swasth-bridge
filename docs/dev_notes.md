@@ -6,3 +6,4 @@
 - Need to handle protected routes.
 - JWT based authentication makes sense.
 - MongoDB schemas for Doctor and User.
+- REST API endpoints structured.
