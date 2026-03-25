@@ -10,3 +10,4 @@
 - Sidebar and Dashboard layout drafted.
 - Settled on blue/white clinical theme.
 - Plan to use standard regex for emails.
+- Context API seems sufficient for now.
