@@ -12,3 +12,4 @@
 - Plan to use standard regex for emails.
 - Context API seems sufficient for now.
 - Will use Render and MongoDB Atlas.
+- Need to polish mobile responsiveness.
