@@ -13,3 +13,4 @@
 - Context API seems sufficient for now.
 - Will use Render and MongoDB Atlas.
 - Need to polish mobile responsiveness.
+- Checking CORS and environment variables.
