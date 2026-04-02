@@ -20,9 +20,9 @@ out/
 .DS_Store
 Thumbs.db
 
-# Private Interview & Deployment Guides (Requested)
-DEPLOYMENT_GUIDE.md
-INTERVIEW_PREP.md
+# Private Guides
+DEPLOYMENT.md
+Planning.md
 
 # Miscellaneous utility scripts
 revert_theme.js
