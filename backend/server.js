@@ -31,6 +31,14 @@ app.use(cors({
 app.use(express.json());
 
 // Routes
+app.get('/api/temp-seed-trigger', (req, res) => {
+  const { exec } = require('child_process');
+  exec('node utils/seeder.js', (err, stdout, stderr) => {
+    if (err) return res.status(500).send(`Error: ${err.message} \n\n ${stderr}`);
+    res.send(`<pre>✅ SEEDING COMPLETE!\n\n${stdout}</pre>`);
+  });
+});
+
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/doctors', require('./routes/doctorRoutes'));
 app.use('/api/appointments', require('./routes/appointmentRoutes'));
