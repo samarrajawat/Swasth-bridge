@@ -151,7 +151,7 @@ const DoctorDashboard = () => {
         </div>
       </motion.div>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard label="Today's Patients" value={todayAppts.length} icon={Calendar} color="teal" />
         <StatCard label="Completed" value={completedToday} icon={CheckCircle} color="emerald" />
         <StatCard label="Pending" value={pendingToday} icon={Clock} color="amber" />

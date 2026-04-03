@@ -72,7 +72,7 @@ const AdminDashboard = () => {
       )}
 
       {/* Stats grid */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard label="Total Doctors" value={stats.doctors} icon={Users} color="teal" subtext={stats.doctors !== undefined ? `${stats.activeDoctors} active` : undefined} />
         <StatCard label="Total Beds" value={stats.totalBeds} icon={BedDouble} color="blue" subtext={stats.totalBeds !== undefined ? `${stats.availableBeds} available` : undefined} />
         <StatCard label="Occupied Beds" value={stats.occupiedBeds} icon={BedDouble} color="red" subtext={stats.totalBeds ? `${Math.round((stats.occupiedBeds/stats.totalBeds)*100)}% occupancy` : undefined} />

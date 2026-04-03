@@ -28,36 +28,51 @@ const adminLinks = [
 
 const roleLinksMap = { patient: patientLinks, doctor: doctorLinks, admin: adminLinks };
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen, onClose }) => {
   const { user } = useAuth();
   const links = roleLinksMap[user?.role] || [];
 
   return (
-    <aside className="w-64 shrink-0 bg-navy-800/60 backdrop-blur-sm border-r border-white/10 flex flex-col p-4 gap-1">
-      <div className="px-3 pb-4 mb-2 border-b border-white/10">
-        <p className="text-xs text-slate-400 uppercase tracking-wider font-semibold">Navigation</p>
-      </div>
-
-      {links.map(({ to, icon: Icon, label }) => (
-        <NavLink
-          key={to}
-          to={to}
-          end={to.split('/').length <= 2}
-          className={({ isActive }) => `sidebar-link ${isActive ? 'active' : ''}`}
-        >
-          <Icon size={18} />
-          <span className="flex-1">{label}</span>
-          <ChevronRight size={14} className="opacity-30" />
-        </NavLink>
-      ))}
-
-      <div className="mt-auto pt-4 border-t border-white/10">
-        <div className="flex items-center gap-2 px-3 py-2">
-          <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span className="text-xs text-slate-400">System Online</span>
+    <>
+      {/* Mobile Backdrop */}
+      {isOpen && (
+        <div 
+          className="fixed inset-0 bg-navy-950/80 backdrop-blur-sm z-40 md:hidden"
+          onClick={onClose}
+        />
+      )}
+      
+      <aside className={`fixed md:static inset-y-0 left-0 z-50 w-64 shrink-0 bg-navy-800/95 md:bg-navy-800/60 backdrop-blur-sm border-r border-white/10 flex flex-col p-4 gap-1 transform transition-transform duration-300 ease-in-out md:translate-x-0 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+        <div className="px-3 pb-4 mb-2 border-b border-white/10">
+          <p className="text-xs text-slate-400 uppercase tracking-wider font-semibold">Navigation</p>
         </div>
-      </div>
-    </aside>
+
+        {links.map(({ to, icon: Icon, label }) => (
+          <NavLink
+            key={to}
+            to={to}
+            end={to.split('/').length <= 2}
+            className={({ isActive }) => `sidebar-link ${isActive ? 'active' : ''}`}
+            onClick={() => {
+              if (window.innerWidth < 768) {
+                onClose();
+              }
+            }}
+          >
+            <Icon size={18} />
+            <span className="flex-1">{label}</span>
+            <ChevronRight size={14} className="opacity-30" />
+          </NavLink>
+        ))}
+
+        <div className="mt-auto pt-4 border-t border-white/10">
+          <div className="flex items-center gap-2 px-3 py-2">
+            <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-xs text-slate-400">System Online</span>
+          </div>
+        </div>
+      </aside>
+    </>
   );
 };
 

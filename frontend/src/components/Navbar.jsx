@@ -1,8 +1,8 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { Activity, LogOut, Bell, User } from 'lucide-react';
+import { Activity, LogOut, Bell, User, Menu } from 'lucide-react';
 
-const Navbar = () => {
+const Navbar = ({ onMenuClick }) => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
@@ -18,15 +18,25 @@ const Navbar = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 h-16 bg-navy-800/80 backdrop-blur-md border-b border-white/10 flex items-center justify-between px-6">
-      <Link to="/" className="flex items-center gap-2.5 group">
-        <div className="w-8 h-8 bg-teal-500 rounded-lg flex items-center justify-center shadow-glow-teal group-hover:scale-110 transition-transform">
-          <Activity size={16} className="text-white" />
-        </div>
-        <span className="text-lg font-bold text-white tracking-tight">
-          Swasth<span className="text-teal-400">Bridge</span>
-        </span>
-      </Link>
+    <header className="sticky top-0 z-50 h-16 bg-navy-800/80 backdrop-blur-md border-b border-white/10 flex items-center justify-between px-4 md:px-6">
+      <div className="flex items-center gap-3">
+        {user && (
+          <button 
+            onClick={onMenuClick}
+            className="md:hidden p-2 -ml-2 text-slate-300 hover:text-white"
+          >
+            <Menu size={24} />
+          </button>
+        )}
+        <Link to="/" className="flex items-center gap-2.5 group">
+          <div className="w-8 h-8 bg-teal-500 rounded-lg flex items-center justify-center shadow-glow-teal group-hover:scale-110 transition-transform">
+            <Activity size={16} className="text-white" />
+          </div>
+          <span className="text-lg font-bold text-white tracking-tight">
+            Swasth<span className="text-teal-400">Bridge</span>
+          </span>
+        </Link>
+      </div>
 
       <div className="flex items-center gap-4">
         {user && (

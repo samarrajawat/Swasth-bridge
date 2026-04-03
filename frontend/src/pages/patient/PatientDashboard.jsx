@@ -59,7 +59,7 @@ const PatientDashboard = () => {
       </motion.div>
 
       {/* Stat Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <StatCard label="Total Appointments" value={stats.appointments} icon={Calendar} color="teal" />
         <StatCard label="Pending Visits" value={stats.pending} icon={Clock} color="amber" />
         <StatCard label="Available Beds" value={stats.availableBeds} icon={BedDouble} color="emerald" />
@@ -67,7 +67,7 @@ const PatientDashboard = () => {
       </div>
 
       {/* Quick actions */}
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <Link to="/patient/book" className="glass-card p-5 hover:border-teal-500/30 transition-all duration-300 group hover:-translate-y-1">
           <div className="flex items-center justify-between">
             <div>
@@ -107,24 +107,26 @@ const PatientDashboard = () => {
         ) : recentAppointments.length === 0 ? (
           <div className="p-8 text-center text-slate-400">No appointments yet. <Link to="/patient/book" className="text-teal-400">Book one!</Link></div>
         ) : (
-          <table className="w-full">
-            <thead><tr className="border-b border-white/5">
-              <th className="table-header text-left">Doctor</th>
-              <th className="table-header text-left">Date</th>
-              <th className="table-header text-left">Slot</th>
-              <th className="table-header text-left">Status</th>
-            </tr></thead>
-            <tbody>
-              {recentAppointments.map(a => (
-                <tr key={a._id} className="table-row">
-                  <td className="table-cell font-medium text-white">{a.doctor_id?.user_id?.name || 'Dr. —'}</td>
-                  <td className="table-cell">{a.date}</td>
-                  <td className="table-cell">{a.time_slot}</td>
-                  <td className="table-cell">{statusBadge(a.status)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <div className="overflow-x-auto w-full">
+            <table className="w-full min-w-[500px]">
+              <thead><tr className="border-b border-white/5">
+                <th className="table-header text-left whitespace-nowrap">Doctor</th>
+                <th className="table-header text-left whitespace-nowrap">Date</th>
+                <th className="table-header text-left whitespace-nowrap">Slot</th>
+                <th className="table-header text-left whitespace-nowrap">Status</th>
+              </tr></thead>
+              <tbody>
+                {recentAppointments.map(a => (
+                  <tr key={a._id} className="table-row">
+                    <td className="table-cell font-medium text-white whitespace-nowrap">{a.doctor_id?.user_id?.name || 'Dr. —'}</td>
+                    <td className="table-cell whitespace-nowrap">{a.date}</td>
+                    <td className="table-cell whitespace-nowrap">{a.time_slot}</td>
+                    <td className="table-cell whitespace-nowrap">{statusBadge(a.status)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
     </div>
