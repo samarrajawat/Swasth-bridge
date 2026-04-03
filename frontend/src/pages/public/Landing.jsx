@@ -20,21 +20,21 @@ const Landing = () => {
     <div className="min-h-screen bg-navy-950 text-white overflow-hidden relative">
       
       {/* Navigation */}
-      <nav className="container mx-auto px-6 py-6 flex items-center justify-between relative z-10">
+      <nav className="container mx-auto px-4 py-4 md:px-6 md:py-6 flex items-center justify-between relative z-10 gap-2">
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}
-          className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-teal-500 rounded-xl flex items-center justify-center shadow-md">
-            <Activity className="text-white" size={24} />
+          className="flex items-center gap-2 md:gap-3 shrink-0">
+          <div className="w-8 h-8 md:w-10 md:h-10 bg-teal-500 rounded-xl flex items-center justify-center shadow-md shrink-0">
+            <Activity className="text-white w-5 h-5 md:w-6 md:h-6" />
           </div>
-          <span className="text-2xl font-bold text-white tracking-tight">Swasth<span className="text-teal-400">Bridge</span></span>
+          <span className="text-xl md:text-2xl font-bold text-white tracking-tight shrink-0">Swasth<span className="text-teal-400">Bridge</span></span>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }}>
+        <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} className="shrink-0">
           <Link to="/login" className="btn-secondary hidden md:inline-flex items-center gap-2 mr-4 border-white/10">
             Login
           </Link>
-          <Link to="/register" className="btn-primary inline-flex items-center gap-2">
-            Patient Portal <ArrowRight size={18} />
+          <Link to="/register" className="btn-primary inline-flex items-center gap-1.5 md:gap-2 whitespace-nowrap text-xs px-3 py-1.5 sm:text-sm sm:px-4 sm:py-2 md:text-base md:px-6 md:py-3">
+            Patient Portal <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           </Link>
         </motion.div>
       </nav>

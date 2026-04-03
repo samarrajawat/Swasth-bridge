@@ -14,8 +14,13 @@ const app = express();
 // Middleware
 app.use(cors({
   origin: (origin, callback) => {
-    // Allow all localhost origins in development
-    if (!origin || /^http:\/\/localhost(:\d+)?$/.test(origin)) {
+    const allowedOrigins = [
+      'https://swasth-bridge.onrender.com',
+      process.env.FRONTEND_URL
+    ].filter(Boolean);
+
+    // Allow localhost and production origins
+    if (!origin || /^http:\/\/localhost(:\d+)?$/.test(origin) || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
