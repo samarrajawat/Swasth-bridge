@@ -94,8 +94,8 @@ node utils/seeder.js
 Configure your `.env` locally:
 ```env
 PORT=5000
-MONGO_URI=mongodb://localhost:27017/swasthbridge
-JWT_SECRET=production_ready_secret_key_0x00
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
 JWT_EXPIRE=7d
 ```
 
@@ -115,11 +115,5 @@ npm run dev
 
 ---
 
-## 🧪 Demo Verification Keys
 
-Log in seamlessly via the pre-populated interface or explicitly using:
-```
-Admin   → admin@swasthbridge.com / admin123
-Doctor  → priya@swasthbridge.com / doctor123
-Patient → patient@swasthbridge.com / patient123
 ```
